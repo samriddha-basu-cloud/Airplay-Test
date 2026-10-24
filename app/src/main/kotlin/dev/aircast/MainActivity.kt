@@ -75,6 +75,8 @@ class MainActivity : AppCompatActivity() {
         btnStop.setOnClickListener { stop() }
         findViewById<MaterialButton>(R.id.btnLog).setOnClickListener { showLog() }
 
+        etIp.setText(getPreferences(Context.MODE_PRIVATE).getString("ip", ""))
+
         setUiEnabled(false)
         tvStatus.text = "Starting Python engine…"
 
@@ -119,6 +121,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun scan() {
         val host = etIp.text.toString().trim()
+        getPreferences(Context.MODE_PRIVATE).edit().putString("ip", host).apply()
         btnScan.isEnabled = false
         tvStatus.text = "Scanning…"
 

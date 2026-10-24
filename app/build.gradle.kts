@@ -70,14 +70,16 @@ chaquopy {
             install("aiohappyeyeballs")
 
             // dependencies with native code (must exist in Chaquopy's wheel repository)
-            install("cryptography")
+            // Versions are pinned on purpose: aiohttp 3.10 needs yarl >= 1.12, but Chaquopy's
+            // prebuilt yarl is only 1.9.3, so yarl/propcache come from PyPI as pure-Python wheels.
+            install("cryptography==42.0.8")
             install("cffi")
             install("pycparser")
-            install("aiohttp")
-            install("multidict")
-            install("yarl")
-            install("frozenlist")
-            install("propcache")
+            install("aiohttp==3.10.10")
+            install("multidict==6.0.4")
+            install("frozenlist==1.4.0")
+            install("yarl==1.18.3")
+            install("propcache==0.2.1")
         }
     }
 }
